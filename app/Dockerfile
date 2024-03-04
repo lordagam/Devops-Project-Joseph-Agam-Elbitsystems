@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.8-slim-buster
+FROM python:3-alpine
 
 # Set the working directory to /app
 WORKDIR /app
@@ -17,4 +17,4 @@ EXPOSE 5000
 ENV NAME World
 
 # Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD ["python3", "app.py"]
