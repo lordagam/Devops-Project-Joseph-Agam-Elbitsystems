@@ -7,9 +7,10 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Expose ports
 EXPOSE 80
 
-# Define environment variable
-ENV FLASK_APP flask-app
-ENV FLASK_PORT 5000
+# Install any needed packages specified in requirements.txt
+RUN pip install -r requirements.txt
+COPY . .
+
 
 # Run custom entrypoint script
 CMD ["nginx", "-g", "daemon off;"]
