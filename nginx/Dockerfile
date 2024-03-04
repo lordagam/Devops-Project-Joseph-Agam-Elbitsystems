@@ -12,4 +12,4 @@ ENV FLASK_APP flask-app
 ENV FLASK_PORT 5000
 
 # Run custom entrypoint script
-CMD ["sh", "/etc/nginx/start.sh"]
+CMD ["nginx", "-g", "daemon off;"]
