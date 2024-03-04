@@ -1,7 +1,8 @@
+#!/usr/bin/python
 from flask import Flask, jsonify
 import docker
 
-app = Flask(__Jo-App-Flask__)
+app = Flask(__name__)
 
 @app.route('/containers', methods=['GET'])
 def get_containers():
