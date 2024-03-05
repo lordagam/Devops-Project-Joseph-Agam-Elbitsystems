@@ -9,4 +9,4 @@ EXPOSE 80
 
 
 # Run custom entrypoint script
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "127.0.0.1", "daemon off;"]
