@@ -8,8 +8,7 @@ COPY . /app
 COPY requirements.txt requirements.txt
 
 # Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
-COPY . .
-
+RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 5000
 # Run app.py when the container launches
 CMD ["python3", "app.py"]
