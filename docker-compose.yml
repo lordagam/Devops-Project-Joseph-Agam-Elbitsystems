@@ -8,6 +8,8 @@ services:
       - "5000:5000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - my-network
   nginx:
     build:
       context: .
@@ -18,3 +20,9 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - app
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
