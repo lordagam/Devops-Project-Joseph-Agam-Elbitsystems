@@ -38,8 +38,8 @@ pipeline {
 
     stage('push to dockerhub') {
       steps {
-        sh 'docker tag docker tag devops-project-joseph-agam-elbitsystems-app:$BUILD_NUMBER  lordagam/app'
-        sh 'docker tag docker tag devops-project-joseph-agam-elbitsystems-nginx:$BUILD_NUMBER  lordagam/nginx'
+        sh 'docker tag docker tag devops-project-joseph-agam-elbitsystems-app  lordagam/app'
+        sh 'docker tag docker tag devops-project-joseph-agam-elbitsystems-nginx  lordagam/nginx'
         sh '"docker login -u $user -p $pass"'
         sleep 5
         sh '"docker push lordagam/app:$BUILD_NUMBER"'
