@@ -19,12 +19,13 @@ pipeline {
         sh 'docker images &&  docker ps'
         sh ' docker tag devops-project-joseph-agam-elbitsystems-app  lordagam/app'
         sleep 5
+       withCredentials(bindings: [usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'pass', usernameVariable: 'user')]) {
         sh 'docker login -u $user -p $pass'
         sh 'docker push lordagam/app:$BUILD_NUMBER'
         echo 'finishes successfully'
-      }
-    }
-
+       }
+     }
+    } 
     stage('Nginx-Build & Push') {
       steps {
         sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/nginx && pwd && ls &&  docker build -t lordagam/nginx  .'
