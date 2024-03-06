@@ -7,43 +7,48 @@ pipeline {
   }
   stages {
     stage('checkout') {
-      parallel {
-        stage('checkout') {
-          steps {
-            git(url: 'https://github.com/lordagam/Devops-Project-Joseph-Agam-Elbitsystems.git', branch: 'main')
-            echo 'good '
-          }
-        }
-
-        stage('pwd') {
-          steps {
-            sh 'ls && pwd'
-          }
-        }
-
+      steps {
+        git(url: 'https://github.com/lordagam/Devops-Project-Joseph-Agam-Elbitsystems.git', branch: 'main')
+        echo 'finishes successfully'
       }
     }
 
-    stage('Build') {
+    stage('Python Flask App-Build & Push') {
       steps {
-        sh 'ls && pwd'
         sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/app && docker build -t lordagam/app  .'
         sh 'docker images &&  docker ps'
-        sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/nginx && pwd && ls &&  docker build -t lordagam/nginx  .'
-        sh 'ls && pwd'
         sh 'docker images &&  docker ps'
-        echo 'Hello from Chuck Norris'
+        sh 'docker tag docker tag devops-project-joseph-agam-elbitsystems-app  lordagam/app'
+        sleep 5
+        sh 'docker login -u $user -p $pass'
+        sh 'docker push lordagam/app:$BUILD_NUMBER'
+        sh 'docker push lordagam/nginx:$BUILD_NUMBER'
+        echo 'finishes successfully'
       }
     }
 
-    stage('push to dockerhub') {
+    stage('Nginx') {
       steps {
-        sh 'docker tag docker tag devops-project-joseph-agam-elbitsystems-app  lordagam/app'
+        sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/nginx && pwd && ls &&  docker build -t lordagam/nginx  .'
         sh 'docker tag docker tag devops-project-joseph-agam-elbitsystems-nginx  lordagam/nginx'
-        sh '"docker login -u $user -p $pass"'
         sleep 5
-        sh '"docker push lordagam/app:$BUILD_NUMBER"'
-        sh '"docker push lordagam/nginx:$BUILD_NUMBER"'
+        sh 'docker images &&  docker ps'
+        sh 'docker login -u $user -p $pass'
+        sh 'docker push lordagam/nginx:$BUILD_NUMBER'
+        echo 'finishes successfully'
+      }
+    }
+
+    stage('A third Job Runs') {
+      steps {
+        sh 'docker compose up -d --build'
+        echo 'finishes successfully'
+      }
+    }
+
+    stage(' successfully') {
+      steps {
+        echo 'request has gone ok  and finishes successfully'
       }
     }
 
