@@ -27,7 +27,7 @@ pipeline {
       steps {
         sh 'ls && pwd'
         sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/app'
-        sh '"docker build -t lordagam/app:$BUILD_NUMBER  ."'
+        sh '"docker build -t lordagam/app  ."'
         sh '"docker build -t lordagam/nginx:$BUILD_NUMBER  ."'
         echo 'Hello from Chuck Norris'
       }
