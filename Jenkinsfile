@@ -25,6 +25,7 @@ pipeline {
 
     stage('Build') {
       steps {
+        sh '"cd /app"'
         sh '"docker build -t lordagam/app:$BUILD_NUMBER  ."'
         sh '"docker build -t lordagam/nginx:$BUILD_NUMBER  ."'
         echo 'Hello from Chuck Norris'
@@ -37,6 +38,7 @@ pipeline {
         sleep 5
         sh '"docker push lordagam/app:$BUILD_NUMBER"'
         sh '"docker push lordagam/nginx:$BUILD_NUMBER"'
+        sh '"docker tag docker tag devops-project-joseph-agam-elbitsystems-app:$BUILD_NUMBER  lordagam/app"'
       }
     }
 
