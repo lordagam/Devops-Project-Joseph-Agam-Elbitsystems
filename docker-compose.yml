@@ -4,8 +4,8 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
-#    volumes:
-#      - /var/run/docker.sock:/var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     networks:
       my-network:
        aliases:
@@ -14,7 +14,7 @@ services:
   nginx:
     build:
       context: ./nginx
-      dockerfile: nginx.Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "80:80"
     volumes:
