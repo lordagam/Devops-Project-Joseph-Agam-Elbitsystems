@@ -25,7 +25,8 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '"cd /app"'
+        sh 'ls && pwd'
+        sh 'cd /app'
         sh '"docker build -t lordagam/app:$BUILD_NUMBER  ."'
         sh '"docker build -t lordagam/nginx:$BUILD_NUMBER  ."'
         echo 'Hello from Chuck Norris'
