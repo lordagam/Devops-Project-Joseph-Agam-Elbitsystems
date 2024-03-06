@@ -2,17 +2,18 @@ version: '3'
 services:
   app:
     build:
-      context: .
+      context: ./app
       dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - my-network
+      my-network:
+       aliases:
+         - "net"
+      
   nginx:
     build:
-      context: .
+      context: ./nginx
       dockerfile: nginx.Dockerfile
     ports:
       - "80:80"
@@ -21,7 +22,9 @@ services:
     depends_on:
       - app
     networks:
-      - my-network
+      my-network:
+       aliases:
+         - "net"
 
 networks:
   my-network:
