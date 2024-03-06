@@ -6,20 +6,9 @@ pipeline {
 
   }
   stages {
-    stage('checkout') {
-      parallel {
-        stage('checkout') {
-          steps {
-            git(url: 'https://github.com/lordagam/Devops-Project-Joseph-Agam-Elbitsystems.git', branch: 'main')
-          }
-        }
-
-        stage('Hello from Chuck Norris') {
-          steps {
-            echo 'good '
-          }
-        }
-
+    stage('Hello from Chuck Norris') {
+      steps {
+        echo 'good '
       }
     }
 
