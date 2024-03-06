@@ -6,10 +6,21 @@ pipeline {
 
   }
   stages {
-    stage('pwd') {
-      steps {
-        sh 'ls && pwd'
-        echo 'good '
+    stage('checkout') {
+      parallel {
+        stage('checkout') {
+          steps {
+            git(url: 'https://github.com/lordagam/Devops-Project-Joseph-Agam-Elbitsystems.git', branch: 'main')
+            echo 'good '
+          }
+        }
+
+        stage('pwd') {
+          steps {
+            sh 'ls && pwd'
+          }
+        }
+
       }
     }
 
