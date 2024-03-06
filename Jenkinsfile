@@ -6,8 +6,9 @@ pipeline {
 
   }
   stages {
-    stage('Hello from Chuck Norris') {
+    stage('pwd') {
       steps {
+        sh 'ls && pwd'
         echo 'good '
       }
     }
