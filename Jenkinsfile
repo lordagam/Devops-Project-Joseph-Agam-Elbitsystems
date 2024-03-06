@@ -27,8 +27,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'ls && pwd'
-        sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/app'
-        sh 'docker build -t lordagam/app  .'
+        sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/app && docker build -t lordagam/app  .'
         sh 'docker images &&  docker ps'
         sh 'cd .. && cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/nginx'
         sh 'ls && pwd'
