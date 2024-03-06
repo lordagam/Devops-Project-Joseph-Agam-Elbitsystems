@@ -26,7 +26,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'ls && pwd'
-        sh 'cd /app'
+        sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/app'
         sh '"docker build -t lordagam/app:$BUILD_NUMBER  ."'
         sh '"docker build -t lordagam/nginx:$BUILD_NUMBER  ."'
         echo 'Hello from Chuck Norris'
