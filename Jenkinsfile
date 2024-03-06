@@ -29,7 +29,7 @@ pipeline {
         sh 'ls && pwd'
         sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/app && docker build -t lordagam/app  .'
         sh 'docker images &&  docker ps'
-        sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/nginx && docker build -t lordagam/nginx  .'
+        sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/nginx && pwd && ls &&  docker build -t lordagam/nginx  .'
         sh 'ls && pwd'
         sh 'docker images &&  docker ps'
         echo 'Hello from Chuck Norris'
