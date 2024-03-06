@@ -17,22 +17,20 @@ pipeline {
       steps {
         sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/app && docker build -t lordagam/app  .'
         sh 'docker images &&  docker ps'
-        sh 'docker images &&  docker ps'
-        sh 'docker tag docker tag devops-project-joseph-agam-elbitsystems-app  lordagam/app'
+        sh ' docker tag devops-project-joseph-agam-elbitsystems-app  lordagam/app'
         sleep 5
         sh 'docker login -u $user -p $pass'
         sh 'docker push lordagam/app:$BUILD_NUMBER'
-        sh 'docker push lordagam/nginx:$BUILD_NUMBER'
         echo 'finishes successfully'
       }
     }
 
-    stage('Nginx') {
+    stage('Nginx-Build & Push') {
       steps {
         sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/nginx && pwd && ls &&  docker build -t lordagam/nginx  .'
-        sh 'docker tag docker tag devops-project-joseph-agam-elbitsystems-nginx  lordagam/nginx'
-        sleep 5
         sh 'docker images &&  docker ps'
+        sh 'docker tag devops-project-joseph-agam-elbitsystems-nginx  lordagam/nginx'
+        sleep 5
         sh 'docker login -u $user -p $pass'
         sh 'docker push lordagam/nginx:$BUILD_NUMBER'
         echo 'finishes successfully'
