@@ -27,9 +27,11 @@ pipeline {
       steps {
         sh 'ls && pwd'
         sh 'cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/app'
-        sh '"docker build -t lordagam/app  ."'
+        sh 'docker build -t lordagam/app  .'
         sh 'cd .. && cd /root/jenkins/workspace/ect-Joseph-Agam-Elbitsystem_main/nginx'
-        sh '"docker build -t lordagam/nginx  ."'
+        sh 'ls && pwd'
+        sh 'docker build -t lordagam/nginx  .'
+        sh 'docker images &&  docker ps'
         echo 'Hello from Chuck Norris'
       }
     }
