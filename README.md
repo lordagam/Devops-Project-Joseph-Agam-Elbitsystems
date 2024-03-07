@@ -4,7 +4,8 @@
 
 ## Overview
 
- The Jenkins pipeline consists of four jobs:
+- The Jenkins pipeline consists of four jobs:
+
 ** Job 1: Checkout Repository
 
    - This job checks out the code from the specified GitHub repository.
